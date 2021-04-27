@@ -1,0 +1,15 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+Hello, <b>{{ user.username|default:'Guest' }}</b>!
+
+
+<div>
+    {% if user.is_authenticated %}
+
+    {% else %}
+        <p>Please <a href="{% url 'login' %}">Login</a> create and publish blogs</p>
+        <p><a href='{% url 'home' %}'>Continue to view</a> and read blog post</p>
+    {% endif %}
+</div>
+{% endblock %}

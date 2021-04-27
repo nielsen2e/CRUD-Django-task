@@ -1,0 +1,16 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+  <h1>New Post</h1>
+    {% if user.is_authenticated %}
+      <form action="" method= 'post'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+        <input type="submit" onclick="window.location='{% url 'home'  %}' ; return false;" value="Cancel">
+      </form>
+    {% else %}
+      <p>You can't create a blog post because you are yet to login</p>
+      <p><b><a href="{% url 'login' %}">Login</a></b></p>
+    {% endif%}
+{% endblock %}

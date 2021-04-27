@@ -1,0 +1,16 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+  <h1>Edit Post</h1>
+    {% if user.is_authenticated %}
+      <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <p><input type="submit" value="update"></p>
+        <p><input type="submit" onclick="window.location='{% url 'post_detail' post.pk %}' ; return false;" value="Cancel"></p>
+      </form>
+    {% else %}
+      <p>You can't edit blog post because you are yet to login</p>
+      <p><b><a href="{% url 'login' %}">Login</a></b></p>
+    {% endif%}
+{% endblock %}
